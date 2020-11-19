@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "385838242838",
+    "firebase_url": "https://nfc-contact-tracing-81917.firebaseio.com",
+    "project_id": "nfc-contact-tracing-81917",
+    "storage_bucket": "nfc-contact-tracing-81917.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385838242838:android:333dcf1869c2b187676937",
+        "android_client_info": {
+          "package_name": "com.example.nfccontacttracing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385838242838-e93s8ahfg2alg30ssngko8thpeepi497.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5LU25QZ9M1AElJ9sbcxiZ1Vvrfh7EYi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385838242838-e93s8ahfg2alg30ssngko8thpeepi497.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
