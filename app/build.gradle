@@ -41,6 +41,7 @@ dependencies {
     implementation'com.google.firebase:firebase-core'
     api 'com.google.guava:guava:28.0-android'
     implementation "com.airbnb.android:lottie:3.4.0"
+    implementation 'com.google.android.material:material:1.2.1'
 
 }
 

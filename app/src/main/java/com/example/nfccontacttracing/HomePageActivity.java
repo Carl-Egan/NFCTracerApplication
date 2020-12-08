@@ -38,10 +38,8 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         btnLogout = findViewById(R.id.logout);
-
         text = findViewById(R.id.text);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-
         if(nfcAdapter== null){
             Toast.makeText(this, "No NFC", Toast.LENGTH_LONG).show();
             finish();
@@ -53,7 +51,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
-            Intent intToMain = new Intent(HomePageActivity.this , MainActivity.class);
+            Intent intToMain = new Intent(HomePageActivity.this , SignUpActivity.class);
             startActivity(intToMain);
         });
 
