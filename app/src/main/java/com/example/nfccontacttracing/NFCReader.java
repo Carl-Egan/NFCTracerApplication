@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nfccontacttracing.parser.NdefMessageParser;
 import com.example.nfccontacttracing.record.ParsedNdefRecord;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class NFCReader extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
     private TextView text;
+    BottomNavigationView navigation;
+    FloatingActionButton floatingActionButton;
 
 
 
@@ -34,8 +38,11 @@ public class NFCReader extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nfc_reader);
 
+        navigation = findViewById(R.id.bottomNavigationView);
+        floatingActionButton = findViewById(R.id.fab);
         text = findViewById(R.id.text);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
         if(nfcAdapter== null){
             Toast.makeText(this, "No NFC", Toast.LENGTH_LONG).show();
             finish();
@@ -45,6 +52,25 @@ public class NFCReader extends AppCompatActivity {
                 new Intent(this , this.getClass())
                         .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),0);
 
+        navigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.home:
+                    Intent intent1 = new Intent(NFCReader.this , HomePageActivity.class);
+                    startActivity(intent1);
+                    break;
+
+
+                case R.id.profile:
+                    Intent intent2 = new Intent(NFCReader.this , ProfileActivity.class);
+                    startActivity(intent2);
+                    break;
+            }
+            return false;
+        });
+
+        floatingActionButton.setOnClickListener(v -> {
+           Toast.makeText(NFCReader.this,"Already Reading NFC",Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override

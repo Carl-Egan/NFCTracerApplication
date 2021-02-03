@@ -9,12 +9,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
 
     Button btnLogout;
     BottomNavigationView navigation;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
@@ -23,6 +25,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         btnLogout = findViewById(R.id.logout);
         navigation = findViewById(R.id.bottomNavigationView);
+        floatingActionButton = findViewById(R.id.fab);
+
 
         navigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -37,6 +41,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        floatingActionButton.setOnClickListener(v -> {
+            Intent intent2 = new Intent(ProfileActivity.this,NFCReader.class);
+            startActivity(intent2);
+        });
+
 
         btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
