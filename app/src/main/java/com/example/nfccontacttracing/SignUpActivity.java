@@ -1,22 +1,21 @@
 package com.example.nfccontacttracing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
    private EditText eEmail;
    private EditText ePassword;
@@ -51,29 +50,29 @@ public class MainActivity extends AppCompatActivity {
                 ePassword.requestFocus();
             }
             else if(inputEmail.isEmpty() && inputPassword.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUpActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
 
             }
             else if (!(inputEmail.isEmpty() && inputPassword.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
 
                             } else {
-                                startActivity(new Intent(MainActivity.this, HomePageActivity.class));
+                                startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
                             }
                         }
                     });
                 }
            else{
-                Toast.makeText(MainActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
 
              }
             });
         tvSignIn.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(i);
         });
 
