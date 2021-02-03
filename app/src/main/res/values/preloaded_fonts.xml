@@ -2,7 +2,5 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/concert_one</item>
-        <item>@font/secular_one</item>
-        <item>@font/ultra</item>
     </array>
 </resources>

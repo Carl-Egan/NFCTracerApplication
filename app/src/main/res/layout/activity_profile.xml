@@ -18,9 +18,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
-       android:id="@+id/bottomAppBar"
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         app:fabCradleMargin="20dp"
         app:fabCradleRoundedCornerRadius="15dp"
