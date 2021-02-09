@@ -1,14 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NFCContactTracing" parent="Theme.MaterialComponents">
+    <style name="Theme.NFCContactTracing" parent="Theme.MaterialComponents.Light.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#2185E4</item>
 
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">#2185E4</item>
         <!-- Secondary brand color. -->
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
 </resources>

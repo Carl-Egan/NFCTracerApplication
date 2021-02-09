@@ -3,21 +3,20 @@ package com.example.nfccontacttracing;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText eEmail;
-    private EditText ePassword;
+    private TextInputEditText eEmail;
+    private TextInputEditText ePassword;
     private Button btnSignIn;
-    TextView tvSignUp;
+    private Button btnSignUp;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -28,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
 
         eEmail = findViewById(R.id.etEmailAddress);
         ePassword = findViewById(R.id.etPassword);
-        btnSignIn = findViewById(R.id.btnSignUp);
+        btnSignIn = findViewById(R.id.btnSignIn);
         mFirebaseAuth = FirebaseAuth.getInstance();
-        tvSignUp = findViewById(R.id.textView);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         mAuthStateListener = firebaseAuth -> {
             FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
@@ -77,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        tvSignUp.setOnClickListener(v -> {
+        btnSignUp.setOnClickListener(v -> {
             Intent intSignUp = new Intent (LoginActivity.this, SignUpActivity.class);
             startActivity(intSignUp);
         });

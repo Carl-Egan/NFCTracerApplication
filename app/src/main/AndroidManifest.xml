@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCContactTracing">
+
         <activity android:name=".LoginActivity" />
-        <activity android:name=".NFCReader"/>
+        <activity android:name=".NFCReader" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SignUpActivity">
@@ -25,15 +26,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-            <activity android:name=".SplashScreen"
-                android:theme="@style/Theme.AppCompat.NoActionBar"
-                tools:ignore="DuplicateActivity">
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            tools:ignore="DuplicateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
-            </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -15,6 +15,8 @@
         android:text="This is the home page"
         app:layout_constraintBottom_toTopOf="@+id/text"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +25,7 @@
         android:layout_width="224dp"
         android:layout_height="wrap_content"
         android:text="Log Out"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
