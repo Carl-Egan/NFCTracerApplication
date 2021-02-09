@@ -2,27 +2,33 @@ package com.example.nfccontacttracing;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-   private TextInputEditText eEmail;
+    public static final String TAG = "TAG";
+    private TextInputEditText eEmail;
    private TextInputEditText ePassword;
    private TextInputEditText ePhoneNum;
    private TextInputEditText eName;
    private Button btnSignUp;
    private Button btnSignIn;
    FirebaseAuth mFirebaseAuth;
+   FirebaseFirestore fStore;
+   String userID;
 
 
 
@@ -39,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         btnSignUp.setOnClickListener(v -> {
 
@@ -46,6 +53,11 @@ public class SignUpActivity extends AppCompatActivity {
             String inputName = eName.getText().toString();
             String inputEmail = eEmail.getText().toString();
             String inputPassword = ePassword.getText().toString();
+
+            if(mFirebaseAuth.getCurrentUser() != null){
+                startActivity(new Intent (getApplicationContext(), HomePageActivity.class));
+                finish();
+            }
 
             if (inputEmail.isEmpty()) {
                 eEmail.setError("Please Enter An Email");
@@ -68,15 +80,24 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
             else if (!(inputEmail.isEmpty() && inputPassword.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
+                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, task -> {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
 
-                            } else {
-                                startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
-                            }
+                        } else {
+                            userID = mFirebaseAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+                            Map<String , Object> user = new HashMap<>();
+                            user.put("name",inputName);
+                            user.put("email",inputEmail);
+                            user.put("phone",inputPhone);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "onSuccess: user Prfile is created for " + userID );
+                                }
+                            });
+                            startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
                         }
                     });
                 }
