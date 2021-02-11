@@ -1,4 +1,4 @@
-package com.example.nfccontacttracing;
+package com.example.nfccontacttracing.activities;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nfccontacttracing.R;
 import com.example.nfccontacttracing.parser.NdefMessageParser;
 import com.example.nfccontacttracing.record.ParsedNdefRecord;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -63,6 +64,11 @@ public class NFCReader extends AppCompatActivity {
                 case R.id.profile:
                     Intent intent2 = new Intent(NFCReader.this , ProfileActivity.class);
                     startActivity(intent2);
+                    break;
+
+                case R.id.news:
+                    Intent intent3 = new Intent(NFCReader.this, NewsActivity.class);
+                    startActivity(intent3);
                     break;
             }
             return false;
