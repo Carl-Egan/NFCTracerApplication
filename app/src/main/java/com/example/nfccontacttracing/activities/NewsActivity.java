@@ -1,6 +1,7 @@
 package com.example.nfccontacttracing.activities;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,9 +41,8 @@ import retrofit2.Response;
 public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     public static final String API_KEY = "efcb7ef165f24c19ae967fc3711a149a";
-    private static final String keyword = "Covid-19";
+    private static final String keyword = "Coronavirus";
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private List<Article> articles = new ArrayList<>();
     private NewsAdapter adapter;
     private String TAG = NewsActivity.class.getSimpleName();
@@ -55,6 +56,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
     FloatingActionButton floatingActionButton;
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +68,12 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         topHeadline = findViewById(R.id.topheadelines);
         recyclerView = findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(NewsActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(NewsActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
 
-        onLoadingSwipeRefresh("");
+        onLoadingSwipeRefresh();
 
         errorLayout = findViewById(R.id.errorLayout);
         errorImage = findViewById(R.id.errorImage);
@@ -96,7 +98,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
                     break;
 
                 case R.id.news:
-                    Toast.makeText(NewsActivity.this, "Already Home", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewsActivity.this, "Already On News Tab", Toast.LENGTH_SHORT).show();
                     return true;
 
 
@@ -130,7 +132,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
-                if (response.isSuccessful() && response.body().getArticle() != null) {
+                if (response.isSuccessful() && Objects.requireNonNull(response.body()).getArticle() != null) {
 
                     if (!articles.isEmpty()) {
                         articles.clear();
@@ -166,7 +168,6 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
                     }
 
                     showErrorMessage(
-                            R.drawable.ic_account,
                             "No Result",
                             "Please Try Again!\n" +
                                     errorCode);
@@ -179,7 +180,6 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
                 topHeadline.setVisibility(View.INVISIBLE);
                 swipeRefreshLayout.setRefreshing(false);
                 showErrorMessage(
-                        R.drawable.ic_person,
                         "Oops..",
                         "Network failure, Please Try Again\n" +
                                 t.toString());
@@ -191,30 +191,27 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     private void initListener() {
 
-        adapter.setOnItemClickListener(new NewsAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                ImageView imageView = view.findViewById(R.id.img);
-                Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
+        adapter.setOnItemClickListener((view, position) -> {
+            ImageView imageView = view.findViewById(R.id.img);
+            Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
 
-                Article article = articles.get(position);
-                intent.putExtra("url", article.getUrl());
-                intent.putExtra("title", article.getTitle());
-                intent.putExtra("img", article.getUrlToImage());
-                intent.putExtra("date", article.getPublishedAt());
-                intent.putExtra("source", article.getSource().getName());
-                intent.putExtra("author", article.getAuthor());
+            Article article = articles.get(position);
+            intent.putExtra("url", article.getUrl());
+            intent.putExtra("title", article.getTitle());
+            intent.putExtra("img", article.getUrlToImage());
+            intent.putExtra("date", article.getPublishedAt());
+            intent.putExtra("source", article.getSource().getName());
+            intent.putExtra("author", article.getAuthor());
 
-                Pair<View, String> pair = Pair.create((View) imageView, ViewCompat.getTransitionName(imageView));
-                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        NewsActivity.this,
-                        pair
-                );
+            Pair<View, String> pair = Pair.create((View) imageView, ViewCompat.getTransitionName(imageView));
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    NewsActivity.this,
+                    pair
+            );
 
 
-                startActivity(intent, optionsCompat.toBundle());
+            startActivity(intent, optionsCompat.toBundle());
 
-            }
         });
 
     }
@@ -227,7 +224,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
         LoadJson();
     }
 
-    private void onLoadingSwipeRefresh(final String keyword) {
+    private void onLoadingSwipeRefresh() {
 
         swipeRefreshLayout.post(
                 new Runnable() {
@@ -240,22 +237,17 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
-    private void showErrorMessage(int imageView, String title, String message) {
+    private void showErrorMessage(String title, String message) {
 
         if (errorLayout.getVisibility() == View.GONE) {
             errorLayout.setVisibility(View.VISIBLE);
         }
 
-        errorImage.setImageResource(imageView);
+        errorImage.setImageResource(R.drawable.ic_error);
         errorTitle.setText(title);
         errorMessage.setText(message);
 
-        btnRetry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onLoadingSwipeRefresh("");
-            }
-        });
+        btnRetry.setOnClickListener(v -> onLoadingSwipeRefresh());
 
     }
 

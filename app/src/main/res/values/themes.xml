@@ -3,7 +3,8 @@
     <style name="Theme.NFCContactTracing" parent="Theme.MaterialComponents.Light.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#2185E4</item>
-
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="colorOnPrimary">#2185E4</item>
         <!-- Secondary brand color. -->
         <item name="colorOnSecondary">@color/white</item>

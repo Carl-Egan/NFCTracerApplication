@@ -48,11 +48,7 @@ public class NdefMessageParser {
             } else if (SmartPoster.isPoster(record)) {
                 elements.add(SmartPoster.parse(record));
             } else {
-                elements.add(new ParsedNdefRecord() {
-                    public String str() {
-                        return new String(record.getPayload());
-                    }
-                });
+                elements.add(() -> new String(record.getPayload()));
             }
         }
 

@@ -30,8 +30,8 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
 
-    private List<Article> articles;
-    private Context context;
+    private final List<Article> articles;
+    private final Context context;
     private OnItemClickListener onItemClickListener;
 
 
@@ -99,7 +99,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         void onItemClick(View view, int position);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
 
         TextView title, desc, author, published_ad, source, time;
         ImageView imageView;

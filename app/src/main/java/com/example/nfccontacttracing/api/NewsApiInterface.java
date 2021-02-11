@@ -9,8 +9,6 @@ import retrofit2.http.Query;
 
 public interface NewsApiInterface {
 
-
-
     @GET("everything")
     Call<News> getNews(
 
