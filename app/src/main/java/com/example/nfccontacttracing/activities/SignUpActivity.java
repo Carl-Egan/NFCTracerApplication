@@ -1,4 +1,4 @@
-package com.example.nfccontacttracing;
+package com.example.nfccontacttracing.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nfccontacttracing.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -63,11 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                 ePassword.setError("Please Enter Your Phone Number");
                 ePassword.requestFocus();
             }
-            else if(inputEmail.isEmpty() && inputPassword.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
-
-            }
-            else if (!(inputEmail.isEmpty() && inputPassword.isEmpty())){
+            else {
                     mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -80,10 +77,6 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     });
                 }
-           else{
-                Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
-
-             }
             });
         btnSignIn.setOnClickListener(v -> {
             Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
