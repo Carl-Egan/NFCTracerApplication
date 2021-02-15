@@ -6,6 +6,8 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nfccontacttracing.activities.SignUpActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override

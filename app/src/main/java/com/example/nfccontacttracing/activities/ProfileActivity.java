@@ -1,4 +1,4 @@
-package com.example.nfccontacttracing;
+package com.example.nfccontacttracing.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nfccontacttracing.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -68,13 +69,18 @@ public class ProfileActivity extends AppCompatActivity {
                 case R.id.profile:
                     Toast.makeText(ProfileActivity.this,"Already On Profile",Toast.LENGTH_SHORT).show();
                     return true;
+
+                case R.id.news:
+                    Intent intent2 = new Intent(ProfileActivity.this, NewsActivity.class);
+                    startActivity(intent2);
+                    break;
             }
             return false;
         });
 
         floatingActionButton.setOnClickListener(v -> {
-            Intent intent2 = new Intent(ProfileActivity.this,NFCReader.class);
-            startActivity(intent2);
+            Intent intent = new Intent(ProfileActivity.this, NFCReader.class);
+            startActivity(intent);
         });
 
 
