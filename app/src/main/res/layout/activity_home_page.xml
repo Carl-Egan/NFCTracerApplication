@@ -1,48 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F5F5"
+    android:background="@color/white"
+
+    android:orientation="vertical"
     tools:context=".activities.HomePageActivity">
 
-
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is the home page"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-       android:id="@+id/bottomAppBar"
+    <ScrollView
         android:layout_width="match_parent"
-        app:fabCradleMargin="20dp"
-        app:fabCradleRoundedCornerRadius="15dp"
-        app:fabCradleVerticalOffset="10dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_height="555dp">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <LinearLayout
             android:layout_width="match_parent"
-            app:elevation="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/transparent"
-            app:menu="@menu/bottom_nav_menu" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_location"
-        app:layout_anchor="@id/bottomAppBar" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@color/main_colour"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/concert_one"
+                    android:text="Covid-19 Prevention"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/mask_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="75dp"
+                    android:src="@drawable/circle" />
+
+                <ImageView
+                    android:id="@+id/mask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/ic_mask" />
+
+                <TextView
+                    android:id="@+id/mask_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="165dp"
+                    android:fontFamily="@font/concert_one"
+                    android:text="Wear a\n face mask "
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/mask_circle"
+                    app:layout_constraintStart_toStartOf="@+id/mask_circle"
+                    app:layout_constraintTop_toBottomOf="@+id/mask_circle" />
+
+                <ImageView
+                    android:id="@+id/hands_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="75dp"
+                    android:layout_toRightOf="@+id/mask_circle"
+                    android:src="@drawable/circle" />
+
+                <ImageView
+                    android:id="@+id/hands"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_toRightOf="@+id/mask"
+                    android:src="@drawable/ic_washing_hands" />
+
+                <TextView
+                    android:id="@+id/hands_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_toRightOf="@+id/mask_txt"
+                    android:fontFamily="@font/concert_one"
+                    android:text="Wash hands\n regularly"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/hands_circle"
+                    app:layout_constraintStart_toStartOf="@+id/hands_circle"
+                    app:layout_constraintTop_toBottomOf="@+id/hands_circle" />
+
+                <ImageView
+                    android:id="@+id/distance_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="75dp"
+                    android:layout_toRightOf="@+id/hands_circle"
+                    android:src="@drawable/circle" />
+
+                <ImageView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_toRightOf="@+id/hands"
+                    android:src="@drawable/ic_social_distance" />
+
+                <TextView
+                    android:id="@+id/distance_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="165dp"
+                    android:layout_toRightOf="@+id/hands_txt"
+                    android:fontFamily="@font/concert_one"
+                    android:text="Keep 2m apart\n where possible"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/distance_circle"
+                    app:layout_constraintStart_toStartOf="@+id/distance_circle"
+                    app:layout_constraintTop_toBottomOf="@+id/distance_circle" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp">
+
+
+                <ImageView
+                    android:id="@+id/sick_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/radius" />
+
+                <ImageView
+                    android:id="@+id/sick_icon"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/ic_fever" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/concert_one"
+                    android:paddingLeft="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Showing symptoms?"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="20dp"
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:elevation="0dp"
+                app:menu="@menu/bottom_nav_menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location"
+            app:layout_anchor="@id/bottomAppBar" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -15,42 +15,52 @@
 
         <ImageView
             android:id="@+id/profile_picture"
-            android:src="@drawable/avatar"
+            android:src="@drawable/ic_user"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerVertical="true" />
 
+        <ImageView
+            android:id="@+id/dropdown"
+            android:layout_width="17dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="290dp"
+            android:src="@drawable/ic_dropdown" />
+
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/concert_one"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_toEndOf="@+id/profile_picture"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/profileEmail"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/concert_one"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileName"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
             android:layout_toEndOf="@+id/profile_picture"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/profilePhoneNum"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/concert_one"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileEmail"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
             android:layout_toEndOf="@+id/profile_picture"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
 
     </RelativeLayout>
@@ -116,13 +126,13 @@
             android:text="Update"
             android:background="@color/main_colour" />
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:background="@color/main_colour" />
+<!--        <Button-->
+<!--            android:id="@+id/logout"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Log Out"-->
+<!--            android:background="@color/main_colour" />-->
     </LinearLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
