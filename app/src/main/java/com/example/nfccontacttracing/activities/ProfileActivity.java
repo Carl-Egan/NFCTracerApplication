@@ -12,16 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.nfccontacttracing.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    Button btnLogout;
+    Button btnLogout , btnUpdate;
     BottomNavigationView navigation;
     FloatingActionButton floatingActionButton;
     FirebaseAuth firebaseAuth;
@@ -29,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     String userId;
 
     TextView fullName , email , phone;
+    TextInputEditText edit_name, edit_number, edit_email;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
@@ -36,12 +35,16 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         btnLogout = findViewById(R.id.logout);
+        btnUpdate = findViewById(R.id.update);
         navigation = findViewById(R.id.bottomNavigationView);
         floatingActionButton = findViewById(R.id.fab);
 
         phone= findViewById(R.id.profilePhoneNum);
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
+        edit_name = findViewById(R.id.edit_name);
+        edit_number = findViewById(R.id.edit_number);
+        edit_email = findViewById(R.id.edit_email);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -49,13 +52,18 @@ public class ProfileActivity extends AppCompatActivity {
         userId = firebaseAuth.getCurrentUser().getUid();
 
         DocumentReference documentReference = firebaseFirestore.collection("users").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                phone.setText(documentSnapshot.getString("phone"));
-                fullName.setText(documentSnapshot.getString("name"));
-                email.setText(documentSnapshot.getString("email"));
-            }
+        documentReference.addSnapshotListener(this, (documentSnapshot, e) -> {
+            //Displaying info for user
+            phone.setText(documentSnapshot.getString("phone"));
+            fullName.setText(documentSnapshot.getString("name"));
+            email.setText(documentSnapshot.getString("email"));
+
+            //Displaying info for amendment
+            edit_number.setText(documentSnapshot.getString("phone"));
+            edit_name.setText(documentSnapshot.getString("name"));
+            edit_email.setText(documentSnapshot.getString("email"));
+
+
         });
 
 
@@ -88,6 +96,10 @@ public class ProfileActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             Intent intToMain = new Intent(ProfileActivity.this, SignUpActivity.class);
             startActivity(intToMain);
+        });
+
+        btnUpdate.setOnClickListener(v -> {
+
         });
     }
 }

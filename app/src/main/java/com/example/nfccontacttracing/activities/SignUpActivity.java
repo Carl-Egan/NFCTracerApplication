@@ -6,12 +6,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nfccontacttracing.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,14 +22,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     private TextInputEditText eEmail;
-   private TextInputEditText ePassword;
-   private TextInputEditText ePhoneNum;
-   private TextInputEditText eName;
-   private Button btnSignUp;
-   private Button btnSignIn;
-   FirebaseAuth mFirebaseAuth;
-   FirebaseFirestore fStore;
-   String userID;
+    private TextInputEditText ePassword;
+    private TextInputEditText ePhoneNum;
+    private TextInputEditText eName;
+    private Button btnSignUp;
+    private Button btnSignIn;
+    FirebaseAuth mFirebaseAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
 
 
@@ -80,42 +77,36 @@ public class SignUpActivity extends AppCompatActivity {
                 ePassword.requestFocus();
             }
             else if(inputEmail.isEmpty() && inputPassword.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
 
             }
             else if (!(inputEmail.isEmpty() && inputPassword.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, task -> {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
-            else {
-                    mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
+                mFirebaseAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(SignUpActivity.this, task -> {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            userID = mFirebaseAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String , Object> user = new HashMap<>();
-                            user.put("name",inputName);
-                            user.put("email",inputEmail);
-                            user.put("phone",inputPhone);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: user Prfile is created for " + userID );
-                                }
-                            });
-                            startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
-                        }
-                    });
-                }
-           else{
+                    } else {
+                        userID = mFirebaseAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fStore.collection("users").document(userID);
+                        Map<String , Object> user = new HashMap<>();
+                        user.put("name",inputName);
+                        user.put("email",inputEmail);
+                        user.put("phone",inputPhone);
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "onSuccess: user Profile is created for " + userID );
+                            }
+                        });
+                        startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
+                    }
+                });
+            }
+            else{
                 Toast.makeText(SignUpActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
 
-             }
-            });
+            }
+        });
         btnSignIn.setOnClickListener(v -> {
             Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(i);
@@ -123,8 +114,4 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     }
-    }
-
-
-
-
+}

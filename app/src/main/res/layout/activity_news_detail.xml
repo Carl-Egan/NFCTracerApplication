@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/purple_700"
+    android:background="@color/main_colour"
     tools:context=".NewsDetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -115,7 +115,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:background="@color/purple_700"
+        android:background="@color/main_colour"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"

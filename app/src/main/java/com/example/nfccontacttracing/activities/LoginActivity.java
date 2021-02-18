@@ -54,11 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 ePassword.setError("Please enter your password");
                 ePassword.requestFocus();
             }
-            else if(inputEmail.isEmpty() && inputPassword.isEmpty()) {
-                Toast.makeText(LoginActivity.this, "Fields Are Empty", Toast.LENGTH_SHORT).show();
-
-            }
-            else if (!(inputEmail.isEmpty() && inputPassword.isEmpty())){
+            else {
                 mFirebaseAuth.signInWithEmailAndPassword(inputEmail,inputPassword).addOnCompleteListener(LoginActivity.this, task -> {
                     if(!task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "Login Error , Please Login Again",Toast.LENGTH_SHORT).show();
@@ -69,10 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intToHome);
                     }
                 });
-            }
-            else{
-                Toast.makeText(LoginActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
-
             }
         });
         btnSignUp.setOnClickListener(v -> {
