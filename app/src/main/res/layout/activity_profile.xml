@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".activities.ProfileActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="230dp"
@@ -134,7 +142,8 @@
 <!--            android:text="Log Out"-->
 <!--            android:background="@color/main_colour" />-->
     </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -167,4 +176,5 @@
             android:src="@drawable/ic_location"
             app:layout_anchor="@id/bottomAppBar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </LinearLayout>
