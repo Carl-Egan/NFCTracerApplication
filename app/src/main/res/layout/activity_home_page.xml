@@ -8,12 +8,10 @@
     android:orientation="vertical"
     tools:context=".activities.HomePageActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="555dp">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:id="@+id/home_page"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -151,17 +149,17 @@
                     android:id="@+id/sick_icon"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:layout_marginTop="80dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginTop="80dp"
                     android:src="@drawable/ic_fever" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/concert_one"
                     android:paddingLeft="30dp"
-                    android:layout_centerHorizontal="true"
                     android:text="Showing symptoms?"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
@@ -182,10 +180,24 @@
                     android:layout_below="@+id/contact_gp_circle"
                     android:layout_marginStart="42dp"
                     android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/sick_icon"
                     android:fontFamily="@font/concert_one"
                     android:text="Contact GP"
-                    android:layout_toRightOf="@+id/sick_icon"
                     android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/doctor_icon"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_alignStart="@+id/contact_gp_circle"
+                    android:layout_alignTop="@+id/contact_gp_circle"
+                    android:layout_alignEnd="@+id/contact_gp_circle"
+                    android:layout_alignBottom="@+id/contact_gp_circle"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="9dp"
+                    app:srcCompat="@drawable/ic_doctor" />
 
                 <ImageView
                     android:id="@+id/stay_home_circle"
@@ -196,30 +208,55 @@
                     android:layout_toEndOf="@+id/contact_gp_circle"
                     android:src="@drawable/circle" />
 
+                <ImageView
+                    android:id="@+id/stay_home_icon"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_alignStart="@+id/stay_home_circle"
+                    android:layout_alignTop="@+id/stay_home_circle"
+                    android:layout_alignEnd="@+id/stay_home_circle"
+                    android:layout_alignBottom="@+id/stay_home_circle"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="12dp"
+                    app:srcCompat="@drawable/ic_stay_at_home" />
+
                 <TextView
                     android:id="@+id/stay_home_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/stay_home_circle"
-                    android:fontFamily="@font/concert_one"
                     android:layout_marginStart="42dp"
-                    android:textColor="@color/white"
                     android:layout_marginTop="8dp"
-                    android:text="Stay home"
                     android:layout_toRightOf="@+id/contact_gp_circle"
-                    />
-
-
+                    android:fontFamily="@font/concert_one"
+                    android:text="Stay home"
+                    android:textColor="@color/white" />
 
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="116dp">
+
+                <Button
+                    android:id="@+id/stats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/concert_one"
+                    android:text="See Statistics On Covid-19"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+      >
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
@@ -237,7 +274,9 @@
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 app:elevation="0dp"
-                app:menu="@menu/bottom_nav_menu" />
+                app:menu="@menu/bottom_nav_menu" >
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -247,5 +286,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_location"
             app:layout_anchor="@id/bottomAppBar" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </LinearLayout>
