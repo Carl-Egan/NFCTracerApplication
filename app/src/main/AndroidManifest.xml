@@ -3,27 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nfccontacttracing">
 
+    <uses-feature android:name="android.hardware.screen.portrait" />
     <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.nfc" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NFCContactTracing">
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.NFCReader" />
-        <activity android:name=".activities.HomePageActivity" />
-        <activity android:name=".activities.NewsActivity"/>
-        <activity android:name=".activities.ProfileActivity" />
+        android:theme="@style/Theme.NFCContactTracing"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.WorldStatsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.NFCReader"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.HomePageActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.NewsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.ProfileActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".activities.NewsDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.SignUpActivity">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +50,7 @@
         </activity>
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/AppTheme"
             tools:ignore="DuplicateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

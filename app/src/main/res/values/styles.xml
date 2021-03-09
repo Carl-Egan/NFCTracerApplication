@@ -3,16 +3,12 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/main_colour</item>
-        <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
+        <item name="colorPrimaryDark">@color/main_colour</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
-    <style name="MyAppBarLayoutTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="MyAppBarLayoutTheme" parent="@style/ThemeOverlay.AppCompat">
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
