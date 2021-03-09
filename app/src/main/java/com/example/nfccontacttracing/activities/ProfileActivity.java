@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 public class ProfileActivity extends AppCompatActivity {
 
     Button btnLogout , btnUpdate;
@@ -35,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Page");
 
         dropdown = findViewById(R.id.dropdown);
         btnUpdate = findViewById(R.id.update);

@@ -56,9 +56,12 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
     FloatingActionButton floatingActionButton;
 
 
+
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Latest Covid-19 Stories");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 

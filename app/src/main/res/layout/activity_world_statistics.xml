@@ -5,7 +5,7 @@
     android:id="@+id/main_refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorldStatsActivity">
+    tools:context=".activities.WorldStatsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +28,18 @@
                 app:cardBackgroundColor="@color/main_colour"
                 app:cardCornerRadius="8dp">
 
+                <TextView
+                    android:id="@+id/title_txt"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:fontFamily="@font/concert_one"
+                    android:gravity="center"
+                    android:text="WorldWide Data"
+                    android:layout_marginTop="20dp"
+                    android:textSize="24dp"
+                    android:textColor="#FFFFFF" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -49,14 +61,6 @@
                             android:layout_height="100dp"
                             android:src="@drawable/ic_worldwide"/>
 
-                        <TextView
-                            android:id="@+id/Data_Title"
-                            android:layout_width="73dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/concert_one"
-                            android:text="WorldWide Data"
-                            android:textColor="#FFFFFF" />
-
                     </LinearLayout>
 
                 </LinearLayout>
@@ -70,7 +74,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.75">
 
-            <GridLayout
+        <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:alignmentMode="alignMargins"
@@ -98,7 +102,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/confirmed_title_textView"
+                            android:id="@+id/confirmed_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -108,7 +112,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/world_confirmed_textview"
+                            android:id="@+id/worldwide_confirmed_txt"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/concert_one"
                             android:layout_height="wrap_content"
@@ -118,7 +122,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/world_confirmed_new_textView"
+                            android:id="@+id/worldwide_new_confirmed_txt"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/concert_one"
                             android:layout_height="wrap_content"
@@ -145,7 +149,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/active_title_textView"
+                            android:id="@+id/active_title"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/concert_one"
                             android:layout_height="wrap_content"
@@ -155,7 +159,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/world_active_textView"
+                            android:id="@+id/worldwide_active"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/concert_one"
                             android:layout_height="wrap_content"
@@ -165,7 +169,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/active_new_textView"
+                            android:id="@+id/worldwide_new_active"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/concert_one"
@@ -196,7 +200,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/recovered_title_textView"
+                            android:id="@+id/recovered_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -216,7 +220,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/world_recovered_new_textView"
+                            android:id="@+id/worldwide_new_recovered"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/concert_one"
@@ -246,7 +250,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/death_title_textView"
+                            android:id="@+id/death_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -256,7 +260,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/world_death_textView"
+                            android:id="@+id/worldwide_death"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/concert_one"
                             android:layout_height="wrap_content"
@@ -266,7 +270,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/world_death_new_textView"
+                            android:id="@+id/worldwide_new_deaths"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/concert_one"
@@ -305,7 +309,7 @@
                     android:rowCount="1">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/samples_card"
+                        android:id="@+id/tests_card"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
@@ -319,6 +323,10 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_test_results"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -328,7 +336,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/world_tests_textView"
+                                android:id="@+id/worldwide_tests"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -337,7 +345,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
-                                android:id="@+id/tests_new_textView"
+                                android:id="@+id/worldwide_new_tests"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -367,7 +375,7 @@
                     android:rowCount="1">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/statewise_card"
+                        android:id="@+id/ireland_card"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
@@ -389,42 +397,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/concert_one"
-                                android:text="Search By Country"
+                                android:text="Ireland Data"
                                 android:textColor="@color/white"
                                 android:textSize="10sp" />
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/moreinfo_card"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_marginStart="6dp"
-                        app:cardBackgroundColor="@color/main_colour"
-                        app:cardCornerRadius="8dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?android:attr/selectableItemBackground"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="World Data"
-                                android:fontFamily="@font/concert_one"
-                                android:textColor="@color/white"
-                                android:textSize="10sp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
 
                 </GridLayout>
             </RelativeLayout>
