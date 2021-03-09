@@ -15,7 +15,6 @@
 
         <ImageView
             android:id="@+id/profile_picture"
-            android:src="@drawable/avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerVertical="true" />
