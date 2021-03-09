@@ -3,6 +3,7 @@ package com.example.nfccontacttracing.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     String userId;
+    ImageView dropdown;
 
     TextView fullName , email , phone;
     TextInputEditText edit_name, edit_number, edit_email;
@@ -34,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        btnLogout = findViewById(R.id.logout);
+        dropdown = findViewById(R.id.dropdown);
         btnUpdate = findViewById(R.id.update);
         navigation = findViewById(R.id.bottomNavigationView);
         floatingActionButton = findViewById(R.id.fab);
@@ -92,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-        btnLogout.setOnClickListener(v -> {
+        dropdown.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             Intent intToMain = new Intent(ProfileActivity.this, SignUpActivity.class);
             startActivity(intToMain);
