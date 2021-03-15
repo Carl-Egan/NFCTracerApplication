@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCContactTracing"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.IrelandStatsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".activities.WorldStatsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>

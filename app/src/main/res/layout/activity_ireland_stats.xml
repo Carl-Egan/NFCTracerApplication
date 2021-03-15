@@ -50,7 +50,7 @@
                             android:layout_marginLeft="120dp"
                             android:fontFamily="@font/concert_one"
                             android:gravity="center"
-                            android:text="WorldWide Data"
+                            android:text="Ireland Data"
                             android:layout_marginTop="20dp"
                             android:textSize="20dp"
                             android:textColor="#FFFFFF" />
@@ -58,7 +58,7 @@
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/ic_worldwide"/>
+                            android:src="@drawable/ic_ireland"/>
 
                     </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.75">
 
-        <GridLayout
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:alignmentMode="alignMargins"
@@ -392,14 +392,17 @@
                             android:orientation="vertical"
                             android:padding="10dp">
 
+
+
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/ireland_data"
+                                android:id="@+id/worldwide_data"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ireland Data"
+                                android:text="WorldWide Data"
                                 android:fontFamily="@font/concert_one"
                                 android:textColor="@color/white"
                                 android:textAllCaps="false">
+
                             </com.google.android.material.button.MaterialButton>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>

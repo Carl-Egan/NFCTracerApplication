@@ -47,7 +47,7 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
         stats.setOnClickListener(v ->{
-            Intent intent2 = new Intent(HomePageActivity.this, WorldStatsActivity.class);
+            Intent intent2 = new Intent(HomePageActivity.this, IrelandStatsActivity.class);
             startActivity(intent2);
         });
 
