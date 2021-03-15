@@ -25,7 +25,7 @@ import org.json.JSONException;
 import java.text.NumberFormat;
 import java.util.Objects;
 
-public class WorldStatsActivity extends AppCompatActivity {
+public class IrelandStatsActivity extends AppCompatActivity {
 
     String totalCasesWorldWide;
     String newCasesWorldWide;
@@ -35,10 +35,9 @@ public class WorldStatsActivity extends AppCompatActivity {
     String totalDeathsWorldWide;
     String newDeathsWorldWide;
     String testsWorldWide;
-
     TextView textView_confirmed, textView_confirmed_new, textView_totalActive, textView_totalRecovered, textView_totalRecovered_new, textView_death, textView_death_new, textView_tests;
     ProgressDialog progressDialog;
-    MaterialButton irelandData;
+    MaterialButton worldData;
     SwipeRefreshLayout swipeRefreshLayout;
     public static int confirmation = 0;
     public static boolean isRefreshed;
@@ -46,8 +45,7 @@ public class WorldStatsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_world_statistics);
-
+        setContentView(R.layout.activity_ireland_stats);
         textView_confirmed = findViewById(R.id.ireland_confirmed_txt);
         textView_confirmed_new = findViewById(R.id.ireland_new_confirmed_txt);
         textView_totalActive = findViewById(R.id.ireland_active);
@@ -57,10 +55,10 @@ public class WorldStatsActivity extends AppCompatActivity {
         textView_death_new = findViewById(R.id.worldwide_new_deaths);
         textView_tests = findViewById(R.id.ireland_tests);
         swipeRefreshLayout = findViewById(R.id.main_refreshLayout);
-        irelandData = findViewById(R.id.ireland_data);
+        worldData = findViewById(R.id.worldwide_data);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("World COVID-19 Stats");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Ireland COVID-19 Stats");
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.blue));
         showProgressDialog();
@@ -69,18 +67,18 @@ public class WorldStatsActivity extends AppCompatActivity {
             isRefreshed = true;
             fetchData();
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(WorldStatsActivity.this, "Data refreshed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(IrelandStatsActivity.this, "Data refreshed!", Toast.LENGTH_SHORT).show();
         });
 
-        irelandData.setOnClickListener(v->{
-            Intent intent = new Intent(WorldStatsActivity.this, IrelandStatsActivity.class);
+        worldData.setOnClickListener(v -> {
+            Intent intent = new Intent(IrelandStatsActivity.this, WorldStatsActivity.class);
             startActivity(intent);
         });
     }
 
     public void fetchData() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String apiUrl = "https://corona.lmao.ninja/v2/all";
+        String apiUrl = "https://corona.lmao.ninja/v2/countries/ireland";
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiUrl, null, response -> {
@@ -197,17 +195,14 @@ public class WorldStatsActivity extends AppCompatActivity {
     }
 
     public void showProgressDialog() {
-        progressDialog = new ProgressDialog(WorldStatsActivity.this);
+        progressDialog = new ProgressDialog(IrelandStatsActivity.this);
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
         Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
-        Runnable progressRunnable = new Runnable() {
-            @Override
-            public void run() {
-                if (confirmation != 1) {
-                    progressDialog.cancel();
-                    Toast.makeText(WorldStatsActivity.this, "Internet slow/not available", Toast.LENGTH_SHORT).show();
-                }
+        Runnable progressRunnable = () -> {
+            if (confirmation != 1) {
+                progressDialog.cancel();
+                Toast.makeText(IrelandStatsActivity.this, "Internet slow/not available", Toast.LENGTH_SHORT).show();
             }
         };
 
