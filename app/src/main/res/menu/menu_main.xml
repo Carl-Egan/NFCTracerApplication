@@ -8,7 +8,7 @@
         android:id="@+id/action_search"
         android:orderInCategory="100"
         android:title="Search"
-        android:icon="@drawable/ic_person"
+        android:icon="@drawable/ic_news"
         app:showAsAction="collapseActionView|always"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
