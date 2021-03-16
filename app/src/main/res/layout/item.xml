@@ -70,7 +70,7 @@
                 android:layout_marginTop="-50dp">
 
                 <ImageView
-                    android:src="@drawable/ic_person"
+                    android:src="@drawable/ic_news"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_marginLeft="5dp"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/concert_one"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
@@ -122,7 +122,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/concert_one"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:maxLines="1"
