@@ -37,7 +37,7 @@ public class NFCReader extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nfc_reader);
+        setContentView(R.layout.activity_nfc_reader);
 
         navigation = findViewById(R.id.bottomNavigationView);
         floatingActionButton = findViewById(R.id.fab);

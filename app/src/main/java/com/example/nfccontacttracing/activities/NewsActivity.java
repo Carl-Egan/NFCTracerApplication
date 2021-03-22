@@ -94,16 +94,19 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
                     Intent intent = new Intent(NewsActivity.this , HomePageActivity.class);
                     startActivity(intent);
                     break;
-
-                case R.id.profile:
-                    Intent intent2 = new Intent(NewsActivity.this, ProfileActivity.class);
-                    startActivity(intent2);
-                    break;
-
                 case R.id.news:
                     Toast.makeText(NewsActivity.this, "Already On News Tab", Toast.LENGTH_SHORT).show();
                     return true;
 
+                case R.id.history:
+                    Intent intent3 = new Intent(NewsActivity.this, HistoryActivity.class);
+                    startActivity(intent3);
+                    break;
+
+                case R.id.profile:
+                    Intent intent4 = new Intent(NewsActivity.this, ProfileActivity.class);
+                    startActivity(intent4);
+                    break;
 
             }
             return false;

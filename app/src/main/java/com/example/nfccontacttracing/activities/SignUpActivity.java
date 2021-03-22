@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nfccontacttracing.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -92,12 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                         user.put("name",inputName);
                         user.put("email",inputEmail);
                         user.put("phone",inputPhone);
-                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "onSuccess: user Profile is created for " + userID );
-                            }
-                        });
+                        documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: user Profile is created for " + userID ));
                         startActivity(new Intent(SignUpActivity.this, HomePageActivity.class));
                     }
                 });
