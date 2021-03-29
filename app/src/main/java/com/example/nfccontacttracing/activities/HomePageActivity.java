@@ -32,15 +32,19 @@ public class HomePageActivity extends AppCompatActivity {
                     Toast.makeText(HomePageActivity.this, "Already Home", Toast.LENGTH_SHORT).show();
                     return true;
 
-
-                case R.id.profile:
-                    Intent intent = new Intent(HomePageActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    break;
-
                 case R.id.news:
                     Intent intent2 = new Intent(HomePageActivity.this, NewsActivity.class);
                     startActivity(intent2);
+                    break;
+
+                case R.id.history:
+                    Intent intent3 = new Intent(HomePageActivity.this, HistoryActivity.class);
+                    startActivity(intent3);
+                    break;
+
+                case R.id.profile:
+                    Intent intent4 = new Intent(HomePageActivity.this, ProfileActivity.class);
+                    startActivity(intent4);
                     break;
             }
             return false;

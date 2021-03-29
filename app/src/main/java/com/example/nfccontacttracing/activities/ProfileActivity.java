@@ -87,6 +87,11 @@ public class ProfileActivity extends AppCompatActivity {
                     Intent intent2 = new Intent(ProfileActivity.this, NewsActivity.class);
                     startActivity(intent2);
                     break;
+
+                case R.id.history:
+                        Intent intent3 = new Intent(ProfileActivity.this,HistoryActivity.class);
+                    startActivity(intent3);
+                    break;
             }
             return false;
         });

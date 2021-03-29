@@ -37,14 +37,18 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:22.1.1'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Testing
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
     api 'com.google.guava:guava:28.0-android'
 
     //firebase
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
     implementation'com.google.firebase:firebase-core'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.1.0'
 
     //lottie animations
     implementation "com.airbnb.android:lottie:3.4.0"
